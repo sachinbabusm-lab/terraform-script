@@ -4,7 +4,7 @@ pipeline{
         credentials="e532f9cb-47df-49b5-9bae-769de56c1481"
     }
     stages{
-        stage("gcp instance launch"){
+        stage("gcp instance destroy"){
             steps{
                 withCredentials([file(credentialsId:env.credentials, variable: 'GC_KEY')]){
                     sh """
