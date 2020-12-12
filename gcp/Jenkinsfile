@@ -18,4 +18,14 @@ pipeline{
             }
         }
     }
+    post{
+        //always
+        //success
+        //stable
+        //unstable
+        //failure
+        always{
+        cleanWs()
+        }
+    }
 }

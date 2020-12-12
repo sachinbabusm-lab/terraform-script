@@ -16,3 +16,9 @@ resource "google_compute_instance" "gcp_instance" {
     network = "default"
   }
 }
+
+terraform {
+  backend "gcs" {
+    bucket = "sachin-terraform"
+  }
+}
