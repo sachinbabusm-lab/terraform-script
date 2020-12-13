@@ -22,8 +22,17 @@ resource "kubernetes_deployment" "hello_world" {
     name = "k8-pod"
   }
   spec {
+    selector {
+      match_labels = {
+        app = "k8-pod"
+      }
+    }
     template {
-      metadata {}
+      metadata {
+        labels = {
+          app = "k8-pod"
+        }
+      }
       spec {
         container {
           name = "docker"
