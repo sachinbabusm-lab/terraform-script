@@ -5,8 +5,8 @@ pipeline{
         {
             steps{
                sh"""
-               cd Docker
-               sudo docker build -t myapp .
+                cd Docker
+                sudo docker build -t myapp .
                 sudo docker tag myapp:latest  us.gcr.io/clean-yew-297908/app:latest
                """
             }
@@ -15,7 +15,7 @@ pipeline{
         {
             steps{
             withCredentials([file(credentialsId:"e532f9cb-47df-49b5-9bae-769de56c1481", variable: 'GC_KEY')]){
-                  sh """. ${JENKINS_HOME}/workspace/airflow-\${JOB_BASE_NAME}-$BUILD_NUMBER/bin/activate
+                  sh """
                     cat '$GC_KEY' | sudo docker login -u _json_key --password-stdin https://us.gcr.io
                     sudo gcloud auth activate-service-account --key-file='$GC_KEY'
                     sudo gcloud auth configure-docker
